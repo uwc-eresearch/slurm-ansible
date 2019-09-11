@@ -1,0 +1,21 @@
+# Database stuff
+
+mysql_root_home: /root
+mysql_root_username: root
+mysql_root_password: 
+
+# Slurm stuff
+db_host: master01.maas.hpc1.uwc.ac.za
+db_user: root
+db_pass: "{{ mysql_root_password }}"
+
+slurm_install_dir: /opt/slurm
+slurm_drmaa_support: False
+slurm_use_shared_fs: False
+
+slurm_mariadb_name: slurm
+slurm_mariadb_pass: 
+
+# Munge options
+munge_external_key: False
+munge_regenerate_key: True

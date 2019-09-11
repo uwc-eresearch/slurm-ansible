@@ -1,0 +1,6 @@
+[submodule "roles/geerlingguy.ansible-role-mysql"]
+	path = roles/geerlingguy.ansible-role-mysql
+	url = https://github.com/geerlingguy/ansible-role-mysql.git
+[submodule "roles/ansible-role-slurm"]
+	path = roles/ansible-role-slurm
+	url = https://github.com/uwc-eresearch/ansible-role-slurm.git
