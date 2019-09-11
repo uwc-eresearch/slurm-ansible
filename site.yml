@@ -1,9 +1,22 @@
 ---
+- hosts: all
+  gather_facts: false
+  pre_tasks:
+  - name: Install python2 for Ansible
+    raw: bash -c "test -e /usr/bin/python || (apt -qqy update && apt install -qqy python-minimal)"
+    register: output
+    changed_when: output.stdout != ""
+  - name: Gathering Facts
+    setup:
 
 - hosts: database
   become: True
   tasks:
     - include_role:
-        name: geerlingguy.ansible-role-mysql
+        name: tschifftner.ansible-role-mariadb
+
+- hosts: slurm
+  become: True
+  tasks:
     - include_role:
         name: ansible-role-slurm

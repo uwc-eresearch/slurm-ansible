@@ -1,13 +1,18 @@
 # Database stuff
 
-mysql_root_home: /root
-mysql_root_username: root
-mysql_root_password: 
+mariadb_admin_home: '/root'
+mariadb_admin_user: 'admin'
+mariadb_admin_password:
+mariadb_admin_hosts: 
+  - '127.0.0.1'
+  - 'localhost'
+  - '172.16.196.%'
+  - '%.maas.hpc1.uwc.ac.za'
 
 # Slurm stuff
 db_host: master01.maas.hpc1.uwc.ac.za
-db_user: root
-db_pass: "{{ mysql_root_password }}"
+db_user: "{{ mariadb_admin_user }}"
+db_pass: "{{ mariadb_admin_password }}"
 
 slurm_install_dir: /opt/slurm
 slurm_drmaa_support: False
