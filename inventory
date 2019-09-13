@@ -13,4 +13,4 @@ master01.maas.hpc1.uwc.ac.za
 
 [slurm]
 master01.maas.hpc1.uwc.ac.za headnode=True slurm_builder=True
-worker01.maas.hpc1.uwc.ac.za
+worker[01:10].maas.hpc1.uwc.ac.za
