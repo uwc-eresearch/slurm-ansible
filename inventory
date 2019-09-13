@@ -1,3 +1,13 @@
+[all:vars]
+ansible_ssh_user=ubuntu
+ansible_become=True
+ansible_private_key_file=/home/edebeste/.ssh/id_rsa
+
+[slurm:vars]
+# DO NOT USE "default" AS A NAME FOR SLURM
+# IT IS A SPECIAL PARTITION
+partitions="['main']"
+
 [database]
 master01.maas.hpc1.uwc.ac.za
 

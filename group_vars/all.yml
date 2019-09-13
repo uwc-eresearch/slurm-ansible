@@ -8,6 +8,9 @@ mariadb_admin_hosts:
   - 'localhost'
   - '172.16.196.%'
   - '%.maas.hpc1.uwc.ac.za'
+  - 'master01.maas.hpc1.uwc.ac.za'
+
+mariadb_apt_keyserver: 'hkp://keyserver.ubuntu.com:80'
 
 # Slurm stuff
 db_host: master01.maas.hpc1.uwc.ac.za
