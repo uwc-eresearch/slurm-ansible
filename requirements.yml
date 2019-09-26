@@ -7,6 +7,11 @@
   name: tschifftner.ansible-role-mariadb
 
 # download ansible-singularity
+- src: https://github.com/Banshee1221/ansible-role-slurm
+  version: master
+  name: ansible-role-slurm
+
+# download ansible-singularity
 - src: https://github.com/Banshee1221/ansible-role-singularity
   version: master
   name: ansible-role-singularity
