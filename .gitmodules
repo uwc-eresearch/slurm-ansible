@@ -1,6 +1,0 @@
-[submodule "roles/ansible-role-slurm"]
-	path = roles/ansible-role-slurm
-	url = https://github.com/uwc-eresearch/ansible-role-slurm.git
-[submodule "roles/tschifftner.ansible-role-mariadb"]
-	path = roles/tschifftner.ansible-role-mariadb
-	url = https://github.com/tschifftner/ansible-role-mariadb.git

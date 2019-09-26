@@ -22,10 +22,15 @@ slurm_drmaa_support: False
 slurm_use_shared_fs: False
 
 slurm_mariadb_name: slurm
-slurm_mariadb_pass: 
+slurm_mariadb_pass:
 
 slurm_cluster_name: uwc-eresearch
 
 # Munge options
 munge_external_key: False
 munge_regenerate_key: True
+
+singularity_version: 3.2.0
+golang_version: 1.13
+golang_install_dir: '/opt/go/{{ golang_version }}'
+golang_gopath: /opt/go/packages

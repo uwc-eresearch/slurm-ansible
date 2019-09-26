@@ -1,0 +1,12 @@
+# download golang repo
+- src: gantsign.golang
+
+# download mariadb
+- src: https://github.com/tschifftner/ansible-role-mariadb
+  version: master
+  name: tschifftner.ansible-role-mariadb
+
+# download ansible-singularity
+- src: https://github.com/Banshee1221/ansible-role-singularity
+  version: master
+  name: ansible-role-singularity

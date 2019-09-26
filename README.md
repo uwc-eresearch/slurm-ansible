@@ -1,0 +1,1 @@
+Run `ansible-galaxy install --roles-path ./roles/. -r requirements.ym` before `ansible-playbook -i inventory site.yml`

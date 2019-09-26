@@ -17,6 +17,15 @@
 
 - hosts: slurm
   become: True
+  pre_tasks:
+    - name: create a folder for go
+      file:
+        path: "{{ golang_install_dir }}"
+        recurse: yes
   tasks:
     - include_role:
-        name: ansible-role-slurm
+            name: ansible-role-slurm
+    - include_role:
+            name: gantsign.golang
+    - include_role: 
+            name: ansible-role-singularity
