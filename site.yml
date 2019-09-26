@@ -25,7 +25,5 @@
   tasks:
     - include_role:
         name: ansible-role-slurm
-    - include_role:
-        name: gantsign.golang
     - include_role: 
         name: ansible-role-singularity
