@@ -14,3 +14,6 @@ master01.maas.hpc1.uwc.ac.za
 [slurm]
 master01.maas.hpc1.uwc.ac.za headnode=True slurm_builder=True
 worker[01:19].maas.hpc1.uwc.ac.za
+
+[fileservers]
+filestore01.maas.hpc1.uwc.ac.za

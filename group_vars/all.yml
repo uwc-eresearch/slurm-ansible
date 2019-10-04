@@ -34,3 +34,7 @@ singularity_version: 3.2.0
 golang_version: 1.13
 golang_install_dir: '/opt/go/{{ golang_version }}'
 golang_gopath: /opt/go/packages
+
+#NFS
+nfs_exports:
+  - "/share/people"

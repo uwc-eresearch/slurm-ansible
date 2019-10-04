@@ -15,3 +15,11 @@
 - src: https://github.com/Banshee1221/ansible-role-singularity
   version: master
   name: ansible-role-singularity
+
+# download NFS role
+- src: geerlingguy.nfs
+
+# download cluster software roles
+- src: https://github.com/uwc-eresearch/ansible-role-cluster
+  version: master
+  name: ansible-role-cluster
