@@ -79,3 +79,14 @@
         - grafana-role
   tags:
     - monitoring
+
+- hosts: node_exporter
+  become: True
+  tasks:
+    - include_role:
+        name: cloudalchemy.node-exporter
+      tags:
+        - node-exporter-role
+  tags:
+    - monitoring
+    - node-exporter

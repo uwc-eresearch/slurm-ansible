@@ -13,7 +13,7 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets:
-      - 127.0.0.1:9093
+      - "{{ ansible_default_ipv4.address }}:9093"
 
 
 scrape_configs:
@@ -22,7 +22,7 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
     - targets:
-      - localhost:9090
+      - "{{ ansible_default_ipv4.address }}:9090"
 
   - job_name: node_exporter
     metrics_path: /metrics
@@ -30,3 +30,4 @@ scrape_configs:
     - targets:
 {% for host in groups['node_exporter']%}
       - "{{ host }}:9100"
+{% endfor %}

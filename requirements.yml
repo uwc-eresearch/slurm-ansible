@@ -32,3 +32,6 @@
 
 # download alertmanager
 - src: cloudalchemy.alertmanager
+
+# download node-exporter
+- src: cloudalchemy.node-exporter
