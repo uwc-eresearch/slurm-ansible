@@ -10,7 +10,7 @@ receivers:
 - name: cachet
       webhook_configs:
         - url: "http://{{ ansible_default_ipv4.address }}:81/webhook"
-        
+
 - name: slack-notifications
   slack_configs:
   - channel: '{{ alertmanager_slack_channel }}'
@@ -38,19 +38,12 @@ receivers:
 {% endraw %}
 
 route:
-  group_by:
-  - alertname
-  - job
-  - instance
-  receiver: slack-notifications
-
-route:
-  receiver: cachet
-  group_by: [alertname]
-  group_wait: 30s
-  group_interval: 1m
-  repeat_interval: 1h
+  group_by: [alertname, job, instance]
   routes:
-    - receiver: cachet
-      match:
-        public: "true"
+    - match:
+       severity: templates
+     continue: true
+     receiver: slack-notifications
+   - match:
+       severity: critical
+     receiver: cachet
