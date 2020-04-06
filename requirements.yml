@@ -23,3 +23,12 @@
 - src: https://github.com/uwc-eresearch/ansible-role-cluster
   version: master
   name: ansible-role-cluster
+
+# download prometheus
+src: cloudalchemy.prometheus
+
+# download grafana
+src: cloudalchemy.grafana
+
+# download alertmanager
+src: cloudalchemy.alertmanager

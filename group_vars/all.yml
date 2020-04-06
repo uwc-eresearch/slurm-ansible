@@ -35,6 +35,6 @@ golang_version: 1.13
 golang_install_dir: '/opt/go/{{ golang_version }}'
 golang_gopath: /opt/go/packages
 
-#NFS
-nfs_exports:
-  - "/share/people"
+# #NFS
+# nfs_exports:
+#   - "/share/people"

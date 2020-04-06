@@ -9,33 +9,35 @@
   - name: Gathering Facts
     setup:
 
-- hosts: fileservers
-  become: True
-  pre_tasks:
-    - block:
-      - name: "Checking folders"
-        stat:
-          path: "{{ item }}"
-        register: folder_stats
-        loop: "{{ nfs_exports }}"
+# - hosts: fileservers
+#   become: True
+#   pre_tasks:
+#     - block:
+#       - name: "Checking folders"
+#         stat:
+#           path: "{{ item }}"
+#         register: folder_stats
+#         loop: "{{ nfs_exports }}"
       
-      - name: "Ensure folders without disturbing previous permissions"
-        file:
-          path: "{{item.item}}"
-          state: directory
-          mode: 0755
-          group: root
-          owner: root
-        when: item.stat.exists == false
-        loop: "{{folder_stats.results}}"
-    - include_role:
-        name: geerlingguy.nfs
+#       - name: "Ensure folders without disturbing previous permissions"
+#         file:
+#           path: "{{item.item}}"
+#           state: directory
+#           mode: 0755
+#           group: root
+#           owner: root
+#         when: item.stat.exists == false
+#         loop: "{{folder_stats.results}}"
+#     - include_role:
+#         name: geerlingguy.nfs
 
 - hosts: database
   become: True
   tasks:
     - include_role:
         name: tschifftner.ansible-role-mariadb
+  tags:
+    - database
 
 - hosts: slurm
   become: True
@@ -47,7 +49,33 @@
   tasks:
     - include_role:
         name: ansible-role-slurm
+      tags:
+        - slurm-role
     - include_role: 
         name: ansible-role-singularity
+      tags:
+        - singularity-role
     - include_role:
         name: ansible-role-cluster
+      tags:
+        - cluster-role
+  tags:
+    - slurm
+
+- hosts: monitoring
+  become: True
+  tasks:
+    - include_role:
+        name: cloudalchemy.alertmanager
+      tags:
+        - alertmanager-role
+    - include_role:
+        name: cloudalchemy.prometheus
+      tags:
+        - prometheus-role
+    - include_role:
+        name: cloudalchemy.grafana
+      tags:
+        - grafana-role
+  tags:
+    - monitoring

@@ -17,3 +17,10 @@ worker[01:19].maas.hpc1.uwc.ac.za
 
 [fileservers]
 filestore01.maas.hpc1.uwc.ac.za
+
+[monitoring]
+maas.hpc1.uwc.ac.za
+
+[node_exporter:children]
+slurm
+fileservers

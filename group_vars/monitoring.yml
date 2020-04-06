@@ -1,0 +1,53 @@
+# Prometheus
+
+prometheus_dir: /opt/prometheus
+prometheus_config_dir: "{{ prometheus_dir }}/config"
+prometheus_db_dir: "{{ prometheus_dir }}/db"
+prometheus_web_listen_address: "{{ ansible_default_ipv4 }}:9090"
+prometheus_storage_retention: "90d"
+prometheus_config_file: "{{ playbook_dir }}/files/monitoring/prometheus.yml.j2"
+prometheus_alert_rules_files: "{{ playbook_dir }}/files/monitoring/rules/"
+
+prometheus_targets:
+- targets:
+  - 127.0.0.1:9100
+  labels:
+    job: node
+- targets:
+  - 127.0.0.1:9093
+  labels:
+    job: alertmanager
+- targets:
+  - 127.0.0.1:3000
+  labels:
+    job: grafana
+
+# alertmanager
+
+alertmanager_dir: /opt/alertmanager
+alertmanager_config_dir: "{{ alertmanager_dir }}/config"
+alertmanager_db_dir: "{{ alertmanager_dir }}/db"
+alertmanager_web_listen_address: "{{ ansible_default_ipv4 }}:9093"
+alertmanager_config_file: "{{ playbook_dir }}/files/monitoring/alertmanager.yml.j2"
+
+# grafana
+
+grafana_dir: /opt/grafana
+grafana_version: latest
+grafana_logs_dir: "{{ grafana_dir }}/logs"
+grafana_data_dir: "{{ grafana_dir }}/data"
+grafana_address: "{{ ansible_default_ipv4 }}"
+grafana_port: 3000
+grafana_url: "http://maas.hpc1.uwc.ac.za:3000"
+grafana_security: {
+  admin_user: admin,
+  admin_password: ''
+}
+grafana_database: { type: sqlite3 }
+grafana_datasources:
+  - name: prometheus
+    type: prometheus
+    access: proxy
+    url: 'http://{{ ansible_default_ipv4 }}:9090'
+    basicAuth: false
+    isDefault: true
