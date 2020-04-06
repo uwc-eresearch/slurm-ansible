@@ -7,6 +7,10 @@ templates:
 
 {% raw %}
 receivers:
+- name: cachet
+      webhook_configs:
+        - url: "http://{{ ansible_default_ipv4.address }}:81/webhook"
+        
 - name: slack-notifications
   slack_configs:
   - channel: '{{ alertmanager_slack_channel }}'
@@ -50,7 +54,3 @@ route:
     - receiver: cachet
       match:
         public: "true"
-  receivers:
-    - name: cachet
-      webhook_configs:
-        - url: "http://172.16.196.20:81/webhook"
