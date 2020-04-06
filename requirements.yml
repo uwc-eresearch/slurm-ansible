@@ -25,10 +25,10 @@
   name: ansible-role-cluster
 
 # download prometheus
-src: cloudalchemy.prometheus
+- src: cloudalchemy.prometheus
 
 # download grafana
-src: cloudalchemy.grafana
+- src: cloudalchemy.grafana
 
 # download alertmanager
-src: cloudalchemy.alertmanager
+- src: cloudalchemy.alertmanager

@@ -19,7 +19,7 @@ worker[01:19].maas.hpc1.uwc.ac.za
 filestore01.maas.hpc1.uwc.ac.za
 
 [monitoring]
-maas.hpc1.uwc.ac.za
+maas.hpc1.uwc.ac.za connection=local
 
 [node_exporter:children]
 slurm
