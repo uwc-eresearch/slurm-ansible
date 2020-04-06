@@ -39,3 +39,18 @@ route:
   - job
   - instance
   receiver: slack-notifications
+
+route:
+  receiver: cachet
+  group_by: [alertname]
+  group_wait: 30s
+  group_interval: 1m
+  repeat_interval: 1h
+  routes:
+    - receiver: cachet
+      match:
+        public: "true"
+  receivers:
+    - name: cachet
+      webhook_configs:
+        - url: "http://172.16.196.20:81/webhook"
