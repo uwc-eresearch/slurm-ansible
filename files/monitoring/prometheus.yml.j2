@@ -7,7 +7,7 @@ global:
     environment: maas.hpc1.uwc.ac.za
 
 rule_files:
-  - "{{ prometheus_dir }}/rules/*.rules"
+  - "{{ prometheus_config_dir }}/rules/*.rules"
 
 alerting:
   alertmanagers:

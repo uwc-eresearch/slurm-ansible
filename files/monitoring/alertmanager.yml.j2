@@ -10,7 +10,7 @@ receivers:
 - name: cachet
   webhook_configs:
   - url: "http://{{ ansible_default_ipv4.address }}:81/webhook"
-  
+
 {% raw %}
 - name: slack-notifications
   slack_configs:
@@ -39,12 +39,13 @@ receivers:
 {% endraw %}
 
 route:
-  group_by: [alertname, job, instance]
+  group_by: [alertname, job]
+  receiver: slack-notifications
   routes:
-    - match:
-       severity: templates
-     continue: true
-     receiver: slack-notifications
-   - match:
-       severity: critical
-     receiver: cachet
+  - match:
+      severity: test
+    continue: true
+    receiver: slack-notifications
+  - match:
+      severity: critical
+    receiver: cachet
