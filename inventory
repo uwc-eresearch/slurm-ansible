@@ -24,3 +24,6 @@ maas.hpc1.uwc.ac.za ansible_connection=local ansible_ssh_user=root
 [node_exporter:children]
 slurm
 fileservers
+
+[slurm-exporter]
+master01.maas.hpc1.uwc.ac.za

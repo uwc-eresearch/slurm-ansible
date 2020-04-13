@@ -17,6 +17,14 @@ alerting:
 
 
 scrape_configs:
+
+  - job_name: slurm-exporter
+    metrics_path: /metrics
+    static_configs:
+    - targets:
+{% for host in groups['slurm-exporter'] %}
+      - "{{ host }}:9101"
+{% endfor %}
   
   - job_name: prometheus
     metrics_path: /metrics
@@ -28,6 +36,6 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
     - targets:
-{% for host in groups['node_exporter']%}
+{% for host in groups['node_exporter'] %}
       - "{{ host }}:9100"
 {% endfor %}

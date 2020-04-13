@@ -90,3 +90,12 @@
   tags:
     - monitoring
     - node-exporter
+
+- hosts: slurm-exporter
+  become: True
+  tasks:
+    - include_role:
+        name: stackhpc.ansible-slurm-exporter
+      tags: slurm-exporter-role
+  tags:
+    slurm-exporter

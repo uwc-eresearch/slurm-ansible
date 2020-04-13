@@ -35,3 +35,8 @@
 
 # download node-exporter
 - src: cloudalchemy.node-exporter
+
+# download and install slurm-exporter
+- src: https://github.com/stackhpc/ansible-slurm-exporter
+  version: master
+  name: stackhpc.ansible-slurm-exporter
