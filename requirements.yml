@@ -36,6 +36,9 @@
 # download node-exporter
 - src: cloudalchemy.node-exporter
 
+# install golang for slurm-exporter
+- src: fubarhouse.golang
+
 # download and install slurm-exporter
 - src: https://github.com/stackhpc/ansible-slurm-exporter
   version: master

@@ -1,1 +1,6 @@
-slurm_exporter_web_listen_address: "{{ ansible_default_ipv4.address }}:9100"
+slurm_exporter_web_listen_address: "{{ ansible_default_ipv4.address }}:9101"
+
+go_version: 1.12
+GOPATH: /root
+GOROOT: /root/go
+build_go_from_source: false

@@ -8,28 +8,8 @@
     changed_when: output.stdout != ""
   - name: Gathering Facts
     setup:
-
-# - hosts: fileservers
-#   become: True
-#   pre_tasks:
-#     - block:
-#       - name: "Checking folders"
-#         stat:
-#           path: "{{ item }}"
-#         register: folder_stats
-#         loop: "{{ nfs_exports }}"
-      
-#       - name: "Ensure folders without disturbing previous permissions"
-#         file:
-#           path: "{{item.item}}"
-#           state: directory
-#           mode: 0755
-#           group: root
-#           owner: root
-#         when: item.stat.exists == false
-#         loop: "{{folder_stats.results}}"
-#     - include_role:
-#         name: geerlingguy.nfs
+  tags:
+    - always
 
 - hosts: database
   become: True
@@ -62,6 +42,32 @@
   tags:
     - slurm
 
+- hosts: node_exporter
+  become: True
+  tasks:
+    - include_role:
+        name: cloudalchemy.node-exporter
+      tags:
+        - node-exporter-role
+  tags:
+    - monitoring
+    - node-exporter
+
+- hosts: slurm-exporter
+  become: True
+  pre_tasks:
+    - name: Install golang dependency for slurm-exporter
+      apt:
+        name: [golang-github-prometheus-client-golang-dev, golang]
+        state: present
+  roles:
+    - stackhpc.ansible-slurm-exporter
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/usr/bin/go"
+    GOPATH: "/opt/go/packages"
+  tags:
+    slurm-exporter
+
 - hosts: monitoring
   become: True
   tasks:
@@ -79,23 +85,3 @@
         - grafana-role
   tags:
     - monitoring
-
-- hosts: node_exporter
-  become: True
-  tasks:
-    - include_role:
-        name: cloudalchemy.node-exporter
-      tags:
-        - node-exporter-role
-  tags:
-    - monitoring
-    - node-exporter
-
-- hosts: slurm-exporter
-  become: True
-  tasks:
-    - include_role:
-        name: stackhpc.ansible-slurm-exporter
-      tags: slurm-exporter-role
-  tags:
-    slurm-exporter
