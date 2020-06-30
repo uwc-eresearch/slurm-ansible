@@ -57,20 +57,20 @@
     - monitoring
     - node-exporter
 
-- hosts: slurm-exporter
-  become: True
-  pre_tasks:
-    - name: Install golang dependency for slurm-exporter
-      apt:
-        name: [golang-github-prometheus-client-golang-dev, golang]
-        state: present
-  roles:
-    - stackhpc.ansible-slurm-exporter
-  environment:
-    PATH: "{{ ansible_env.PATH }}:/usr/bin/go"
-    GOPATH: "/opt/go/packages"
-  tags:
-    slurm-exporter
+# - hosts: slurm-exporter
+#   become: True
+#   pre_tasks:
+#     - name: Install golang dependency for slurm-exporter
+#       apt:
+#         name: [golang-github-prometheus-client-golang-dev, golang]
+#         state: present
+#   roles:
+#     - stackhpc.ansible-slurm-exporter
+#   environment:
+#     PATH: "{{ ansible_env.PATH }}:/usr/bin/go"
+#     GOPATH: "/opt/go/packages"
+#   tags:
+#     slurm-exporter
 
 - hosts: monitoring
   become: True
