@@ -8,7 +8,6 @@ mariadb_admin_hosts:
   - 'localhost'
   - '172.16.196.%'
   - '%.maas.hpc1.uwc.ac.za'
-  - 'master01.maas.hpc1.uwc.ac.za'
 
 mariadb_apt_keyserver: 'hkp://keyserver.ubuntu.com:80'
 
@@ -17,7 +16,8 @@ db_host: master01.maas.hpc1.uwc.ac.za
 db_user: "{{ mariadb_admin_user }}"
 db_pass: "{{ mariadb_admin_password }}"
 
-slurm_install_dir: /opt/slurm
+slurm_version: 20.02.3
+slurm_install_dir: "/opt/slurm-{{slurm_version}}"
 slurm_drmaa_support: False
 slurm_use_shared_fs: False
 
@@ -31,6 +31,7 @@ munge_external_key: False
 munge_regenerate_key: True
 
 singularity_version: 3.2.0
+singularity_install_dir: /opt/singularity
 golang_version: 1.13
 golang_install_dir: '/opt/go/{{ golang_version }}'
 golang_gopath: /opt/go/packages

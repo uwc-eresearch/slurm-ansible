@@ -33,6 +33,10 @@
         - slurm-role
     - include_role: 
         name: ansible-role-singularity
+    - name: Template out singularity.conf
+      template:
+        src: "{{ playbook_dir }}/files/singularity/singularity.j2"
+        dest: "{{ singularity_install_dir }}/{{ singularity_version }}/etc/singularity/singularity.conf"
       tags:
         - singularity-role
     - include_role:
