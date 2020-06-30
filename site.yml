@@ -72,20 +72,20 @@
 #   tags:
 #     slurm-exporter
 
-- hosts: monitoring
-  become: True
-  tasks:
-    - include_role:
-        name: cloudalchemy.alertmanager
-      tags:
-        - alertmanager-role
-    - include_role:
-        name: cloudalchemy.prometheus
-      tags:
-        - prometheus-role
-    - include_role:
-        name: cloudalchemy.grafana
-      tags:
-        - grafana-role
-  tags:
-    - monitoring
+# - hosts: monitoring
+#   become: True
+#   tasks:
+#     - include_role:
+#         name: cloudalchemy.alertmanager
+#       tags:
+#         - alertmanager-role
+#     - include_role:
+#         name: cloudalchemy.prometheus
+#       tags:
+#         - prometheus-role
+#     - include_role:
+#         name: cloudalchemy.grafana
+#       tags:
+#         - grafana-role
+#   tags:
+#     - monitoring
